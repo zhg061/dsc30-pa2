@@ -33,7 +33,7 @@ public class SunshineMarket {
         int registersIdleTime = 0;
         
         // TODO
-        
+
         return "With " + numberOfRegisters +
         " lines, the total time for checking out all customers was "
         + totalTime + " time units, and registers were idle for a total of "
