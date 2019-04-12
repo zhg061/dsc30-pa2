@@ -17,7 +17,7 @@ public class SunshineMarket {
      */
     public static void main(String[] args) {
         
-        // TODO: test timeInfo()
+        SunshineMarket.timeInfo(customers1, 1);
     }
     
     /**
@@ -33,10 +33,7 @@ public class SunshineMarket {
         int registersIdleTime = 0;
         
         // TODO
-        for (int i = 0; i < customers.length; i++) {
-            customers[i]
-
-        }
+        
         return "With " + numberOfRegisters +
         " lines, the total time for checking out all customers was "
         + totalTime + " time units, and registers were idle for a total of "
