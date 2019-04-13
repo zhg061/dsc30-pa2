@@ -9,6 +9,8 @@ public class SunshineMarket {
     
     private static QueueADT customersQueue;
     private static QueueADT[] registers;
+
+
     
     /**
      * This is the program entry where we will run our simulation
@@ -17,7 +19,7 @@ public class SunshineMarket {
      */
     public static void main(String[] args) {
         
-        SunshineMarket.timeInfo(customers1, 1);
+        SunshineMarket.timeInfo(customers1, 3);
     }
     
     /**
@@ -28,11 +30,32 @@ public class SunshineMarket {
      * @return a string that contains information about total time
      *         for checking out all customers and register idle time.
      */
+//    change string to queaft
     public static String timeInfo(int[] customers, int numberOfRegisters) {
         int totalTime = 0;
         int registersIdleTime = 0;
-        
-        // TODO
+        customersQueue = new CircularArrayQueue();
+        registers = new QueueADT[numberOfRegisters];
+        for (int i = 0; i < numberOfRegisters; i++) {
+            registers[i] = new CircularArrayQueue();
+        }
+        for (int j = 0; j < customers.length; j++) {
+            customersQueue.add(customers[j]);
+            QueueADT temporaryRegister = findFirstEmptyRegister();
+            for (int z = 0; z < customers[j]; z++) {
+                temporaryRegister.add(1);
+            }
+            customersQueue.remove();
+        }
+        System.out.println(registers.length);
+//        int j = 0;
+//        while (j < customers.length) {
+//
+//        }
+
+
+
+
 
         return "With " + numberOfRegisters +
         " lines, the total time for checking out all customers was "
@@ -46,7 +69,11 @@ public class SunshineMarket {
      */
     private static QueueADT findFirstEmptyRegister() {
         
-        // TODO
+        for (int i = 0; i < registers.length; i++) {
+            if (registers[i].isEmpty()) {
+                return registers[i];
+            }
+        }
         return null;
     }
     
