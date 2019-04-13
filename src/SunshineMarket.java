@@ -48,15 +48,6 @@ public class SunshineMarket {
             customersQueue.remove();
         }
         System.out.println(registers.length);
-//        int j = 0;
-//        while (j < customers.length) {
-//
-//        }
-
-
-
-
-
         return "With " + numberOfRegisters +
         " lines, the total time for checking out all customers was "
         + totalTime + " time units, and registers were idle for a total of "
