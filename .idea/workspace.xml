@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7495774b-47f4-4935-a1f2-c52d0e1c9814" name="Default Changelist" comment="" />
+    <list default="true" id="7495774b-47f4-4935-a1f2-c52d0e1c9814" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/.idea/dsc30-pa2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/out/production/dsc30-pa2/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/out/production/dsc30-pa2/Bank.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/out/production/dsc30-pa2/BankTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/out/production/dsc30-pa2/CircularArrayQueue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/out/production/dsc30-pa2/ExampleOutputs.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/out/production/dsc30-pa2/InsufficientFundsException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/out/production/dsc30-pa2/QueueADT.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/out/production/dsc30-pa2/QueueADTTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/out/production/dsc30-pa2/SunshineMarket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/src/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/src/Bank.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/src/BankTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/src/CheckingAccount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/src/CheckingAccountTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/src/CircularArrayQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/src/ExampleOutputs.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/src/InsufficientFundsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/src/QueueADT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/src/QueueADTTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/src/SavingsAccount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/src/SavingsAccountTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dsc30sp19-startercode/src/SunshineMarket.java" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SunshineMarket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+            <state relative-caret-position="408">
+              <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -29,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CheckingAccountTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="13" column="50" lean-forward="true" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+            <state relative-caret-position="221">
+              <caret line="13" column="50" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -38,7 +66,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/QueueADTTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2907">
+            <state relative-caret-position="478">
               <caret line="171" column="21" lean-forward="true" selection-start-line="171" selection-start-column="21" selection-end-line="171" selection-end-column="21" />
             </state>
           </provider>
@@ -129,8 +157,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -138,12 +166,14 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -221,8 +251,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.SunshineMarket.java" />
       <item itemvalue="Application.SunshineMarket" />
+      <item itemvalue="Application.SunshineMarket.java" />
       <item itemvalue="JUnit.QueueADTTest.clear" />
       <item itemvalue="JUnit.QueueADTTest.peek" />
       <item itemvalue="JUnit.QueueADTTest.remove" />
@@ -288,10 +318,10 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4920635" visible="true" weight="0.18704453" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4920635" visible="true" weight="0.1902834" />
       <window_info id="Structure" order="1" sideWeight="0.5044405" side_tool="true" weight="0.18704453" />
       <window_info id="Designer" order="2" />
-      <window_info id="Favorites" order="3" sideWeight="0.50793654" side_tool="true" visible="true" weight="0.18704453" />
+      <window_info id="Favorites" order="3" sideWeight="0.50793654" side_tool="true" weight="0.18704453" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49959514" weight="0.053285968" />
@@ -311,6 +341,9 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/dsc30sp19-startercode" />
+    </ignored-roots>
     <MESSAGE value="PA2 checkpoint" />
     <option name="LAST_COMMIT_MESSAGE" value="PA2 checkpoint" />
   </component>
@@ -345,8 +378,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SunshineMarket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+        <state relative-caret-position="408">
+          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CheckingAccountTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="50" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -364,16 +404,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CheckingAccountTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="13" column="50" lean-forward="true" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/QueueADTTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2907">
+        <state relative-caret-position="478">
           <caret line="171" column="21" lean-forward="true" selection-start-line="171" selection-start-column="21" selection-end-line="171" selection-end-column="21" />
         </state>
       </provider>
