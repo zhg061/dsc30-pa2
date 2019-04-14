@@ -1,3 +1,5 @@
+import java.util.Arrays;
+// remember to remove this import
 /**
  *  TODO: add class header
  */
@@ -10,16 +12,18 @@ public class SunshineMarket {
     private static QueueADT customersQueue;
     private static QueueADT[] registers;
 
-
-    
     /**
      * This is the program entry where we will run our simulation
      *
      * @param args commandline arguments
      */
     public static void main(String[] args) {
-        
-        SunshineMarket.timeInfo(customers1, 3);
+//        SunshineMarket.timeInfo(customers1, 1);
+        SunshineMarket.timeInfo(customers2, 2);
+        SunshineMarket.timeInfo(customers2, 3);
+        SunshineMarket.timeInfo(customers2, 4);
+        SunshineMarket.marketIsEmpty();
+
     }
     
     /**
@@ -30,7 +34,7 @@ public class SunshineMarket {
      * @return a string that contains information about total time
      *         for checking out all customers and register idle time.
      */
-//    change string to queaft
+
     public static String timeInfo(int[] customers, int numberOfRegisters) {
         int totalTime = 0;
         int registersIdleTime = 0;
@@ -42,12 +46,46 @@ public class SunshineMarket {
         for (int j = 0; j < customers.length; j++) {
             customersQueue.add(customers[j]);
             QueueADT temporaryRegister = findFirstEmptyRegister();
-            for (int z = 0; z < customers[j]; z++) {
-                temporaryRegister.add(1);
+            if (temporaryRegister != null) {
+                for (int z = 0; z < customers[j]; z++) {
+                    temporaryRegister.add(1);
+                }
+            }
+            else {
+                QueueADT temporaryRegister2 = registers[0];
+                for (int k = 0; k < numberOfRegisters; k++) {
+                    if (registers[k].size() < temporaryRegister2.size()) {
+                        temporaryRegister2 = registers[k];
+                    }
+                }
+                for (int z = 0; z < customers[j]; z++) {
+                    temporaryRegister2.add(1);
+                }
             }
             customersQueue.remove();
         }
-        System.out.println(registers.length);
+        for (int k = 0; k < numberOfRegisters; k++) {
+            if (totalTime < registers[k].size()) {
+                totalTime = registers[k].size();
+            }
+        }
+        int removedTime = 0;
+        for (int f = 0; f < totalTime; f++) {
+            for (int j = 0; j < numberOfRegisters; j++) {
+                if (!registers[j].isEmpty()) {
+                    registers[j].remove();
+                }
+                else {
+                    registersIdleTime++;
+                }
+                removedTime += registers[j].size();
+            }
+        }
+//        System.out.println(Arrays.toString(((CircularArrayQueue)registers[0]).getter()));
+//        System.out.println(Arrays.toString(((CircularArrayQueue)registers[1]).getter()));
+//        System.out.println(Arrays.toString(((CircularArrayQueue)registers[2]).getter()));
+//        System.out.println(totalTime);
+//        System.out.println(registersIdleTime);
         return "With " + numberOfRegisters +
         " lines, the total time for checking out all customers was "
         + totalTime + " time units, and registers were idle for a total of "
@@ -74,9 +112,13 @@ public class SunshineMarket {
      * @return true if the whole market is empty
      */
     private static boolean marketIsEmpty() {
-        
-        // TODO
-        
-        return false;
+        boolean result = false;
+        for (int i = 0; i < registers.length; i++) {
+            if (registers[i].isEmpty()) {
+                result = true;
+            }
+        }
+//        System.out.println((result == true && customersQueue.isEmpty()));
+        return (result == true && customersQueue.isEmpty());
     }
 }
