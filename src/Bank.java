@@ -15,6 +15,8 @@ public class Bank {
      */
     public Bank() {
         // TODO
+        accounts = new ArrayList<>();
+        savingsInterestRate = 0;
     }
 
     /**
@@ -23,6 +25,7 @@ public class Bank {
      */
     public void setSavingsInterest(double rate) {
         // TODO
+        savingsInterestRate = rate;
     }
 
     /**
@@ -31,7 +34,14 @@ public class Bank {
      */
     public int getNumberOfCheckingAccounts() {
         // TODO
-        return 0;
+        int numOfCheck = 0;
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i) instanceof CheckingAccount) {
+                numOfCheck++;
+            }
+
+        }
+        return numOfCheck;
     }
 
     /**
@@ -40,7 +50,14 @@ public class Bank {
      */
     public int getNumberOfSavingsAccounts() {
         // TODO
-        return 0;
+        int numOfSave = 0;
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i) instanceof SavingsAccount) {
+                numOfSave++;
+            }
+
+        }
+        return numOfSave;
     }
 
     /**
@@ -51,7 +68,11 @@ public class Bank {
      */
     private Account getCheckingAccount(String accountID) {
         // TODO
-
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i).getId().equals(accountID) && accounts.get(i) instanceof CheckingAccount) {
+                return accounts.get(i);
+            }
+        }
         return null;
     }
 
@@ -63,7 +84,11 @@ public class Bank {
      */
     private Account getSavingsAccount(String accountID) {
         // TODO
-
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i).getId().equals(accountID) && accounts.get(i) instanceof SavingsAccount) {
+                return accounts.get(i);
+            }
+        }
         return null;
     }
 
@@ -83,8 +108,22 @@ public class Bank {
         String minimumMSG = "THE MINIMUM INITIAL DEPOSIT FOR A CHECKING ACCOUNT WAS NOT MET!";
 
         // TODO
-
-        return false;
+        double miniDeposit = 0.01;
+        if (getCheckingAccount(accountID) != null) {
+            System.out.println(failMSG);
+            return false;
+        }
+        else {
+            try{
+                accounts.add(new CheckingAccount(accountID, initialDeposit));
+            }
+            catch(InsufficientFundsException e) {
+                System.out.println(minimumMSG);
+                return false;
+            }
+            System.out.println(successMSG);
+            return true;
+        }
     }
 
     /**
@@ -103,8 +142,24 @@ public class Bank {
         String minimumMSG = "THE MINIMUM INITIAL DEPOSIT FOR A CHECKING ACCOUNT WAS NOT MET!";
 
         // TODO
+        double miniDeposit = 0.01;
+        if (getSavingsAccount(accountID) != null) {
+            System.out.println(failMSG);
+            return false;
+        }
+        else {
+            try{
+                accounts.add(new SavingsAccount(accountID, initialDeposit));
+            }
+            catch(InsufficientFundsException e) {
+                System.out.println(minimumMSG);
+                return false;
+            }
+            System.out.println(successMSG);
 
-        return false;
+
+            return true;
+        }
     }
 
     /**
@@ -119,9 +174,21 @@ public class Bank {
         String noSavingsMSG = accountID + " DOES NOT HAVE A SAVINGS ACCOUNT!";
 
         // TODO
-
-        return null;
+        if (isChecking) {
+            if (getCheckingAccount(accountID) == null) {
+                System.out.println(noCheckingMSG);
+                return null;
+            }
+            return getCheckingAccount(accountID);
+        } else {
+            if (getSavingsAccount(accountID) == null) {
+                System.out.println(noSavingsMSG);
+                return null;
+            }
+            return getSavingsAccount(accountID);
+        }
     }
+
 
     /**
      * Adds money to the account associated with accountID
@@ -133,6 +200,10 @@ public class Bank {
      */
     public Double deposit(boolean isChecking, String accountID, double amount)  {
         // TODO
+        if (getAccount(accountID, isChecking) != null) {
+            return getAccount(accountID, isChecking).deposit(amount);
+        }
+
 
         return null;
     }
@@ -148,9 +219,20 @@ public class Bank {
     public Double withdraw(boolean isChecking, String accountID, double amount) {
 
         // TODO
-
+        if (getAccount(accountID, isChecking) != null) {
+            try {
+                getAccount(accountID, isChecking).withdraw(amount);
+            } catch(InsufficientFundsException e) {
+                System.out.println("USER: (" + accountID + ") CANNOT MAKE A WITHDRAWAL FROM THEIR CHECKING");
+                return null;
+            }
+            return getAccount(accountID, isChecking).getBalance();
+        }
         return null;
     }
+
+
+
 
     /**
      * Moves money from an account to another account via "online" transfer. No check fees are charged.
@@ -168,8 +250,18 @@ public class Bank {
     public boolean onlineTransfer(String fromAccountID, boolean isFromChecking, String toAccountID,
                                   boolean isToChecking, double amount) {
         // TODO
-
-        return false;
+        if (getAccount(fromAccountID, isFromChecking) == null || getAccount(toAccountID, isToChecking) == null) {
+            return false;
+        }
+        else {
+            if (withdraw(isFromChecking, fromAccountID, amount) != null) {
+                deposit(isToChecking, toAccountID, amount);
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     }
 
     /**
@@ -188,8 +280,28 @@ public class Bank {
                                  boolean isToChecking, double amount) {
         String shouldUseCheckingMSG = fromAccountID + " SHOULD USE A CHECKING ACCOUNT!";
         // TODO
-
-        return false;
+        double REQUIRED_DEPOSIT = 0.01;
+        if (!isFromChecking) {
+            System.out.println(shouldUseCheckingMSG);
+            return false;
+        }
+        else {
+            if (getAccount(fromAccountID, true) == null || getAccount(toAccountID, isToChecking) == null) {
+                return false;
+            }
+            CheckingAccount a = (CheckingAccount)getAccount(fromAccountID, isFromChecking);
+            try {
+                a.withdrawUsingCheck(amount);
+            }
+            catch(InsufficientFundsException e) {
+                System.out.println("USER: (" + fromAccountID + ") CANNOT MAKE A WITHDRAWAL FROM THEIR CHECKING " +
+                        "ACCOUNT UNTIL THEY COVER THEIR NEGATIVE BALANCE WITH A DEPOSIT OF AT LEAST ($" +
+                        REQUIRED_DEPOSIT + ")");
+                return false;
+            }
+            getAccount(toAccountID, isToChecking).deposit(amount);
+            return true;
+        }
     }
 
     /**
@@ -197,6 +309,14 @@ public class Bank {
      */
     public void addInterest() {
         // TODO
+        int dividingFactor = 100;
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i) instanceof SavingsAccount) {
+                accounts.get(i).balance = (1 + savingsInterestRate/dividingFactor) * accounts.get(i).balance;
+            }
+
+        }
+
     }
 
     /**

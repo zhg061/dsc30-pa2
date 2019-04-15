@@ -16,7 +16,9 @@ public abstract class Account {
      * @param balance The starting balance for this new bank account
      */
     public Account(String id, double balance){
-        // TODO
+        super();
+        this.id = id;
+        this.balance = balance;
     }
 
     /**
@@ -24,8 +26,7 @@ public abstract class Account {
      * @return the account identifier
      */
     public String getId(){
-        // TODO
-        return null;
+        return id;
     }
 
     /**
@@ -33,8 +34,7 @@ public abstract class Account {
      * @return  the balance of the account
      */
     public double getBalance() {
-        // TODO
-        return 0.0;
+        return balance;
     }
 
     /**
@@ -56,8 +56,8 @@ public abstract class Account {
      * @return the new balance
      */
     public double deposit(double amount) {
-        // TODO
-        return 0.0;
+        balance += amount;
+        return balance;
     }
 
     /**
