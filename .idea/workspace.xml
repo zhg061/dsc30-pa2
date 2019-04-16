@@ -216,7 +216,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BankTest.testprintAccount">
+  <component name="RunManager" selected="JUnit.BankTest">
     <configuration name="BankTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="dsc30-pa2" />
       <option name="PACKAGE_NAME" value="" />
@@ -266,9 +266,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BankTest" />
         <item itemvalue="JUnit.BankTest.testprintAccount" />
         <item itemvalue="JUnit.BankTest.testCreateSavingsAccount" />
-        <item itemvalue="JUnit.BankTest" />
         <item itemvalue="JUnit.QueueADTTest" />
         <item itemvalue="JUnit.SavingsAccountTest" />
       </list>
