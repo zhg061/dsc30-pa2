@@ -18,7 +18,7 @@ public class Bank {
      * Default constructor creates an empty accounts Array List and set initial interest rate to 0%
      */
     public Bank() {
-        // the constructor of the method create a new array list, and
+        // the constructor of the method create a new array list, and set the interest rate to zero
         accounts = new ArrayList<>();
         savingsInterestRate = 0;
     }
@@ -28,7 +28,7 @@ public class Bank {
      * @param rate The rate which will be the new savings interest rate
      */
     public void setSavingsInterest(double rate) {
-        // TODO
+        // set the interest rate to rate
         savingsInterestRate = rate;
     }
 
@@ -37,7 +37,8 @@ public class Bank {
      * @return the number of checking accounts in this bank
      */
     public int getNumberOfCheckingAccounts() {
-        // TODO
+        // return the number of checking accounts in the
+        // array list by iterating the for loop
         int numOfCheck = 0;
         for (int i = 0; i < accounts.size(); i++) {
             if (accounts.get(i) instanceof CheckingAccount) {
@@ -53,7 +54,7 @@ public class Bank {
      * @return the number of savings accounts in this bank
      */
     public int getNumberOfSavingsAccounts() {
-        // TODO
+        // get the number of saving account by iterating the for loop
         int numOfSave = 0;
         for (int i = 0; i < accounts.size(); i++) {
             if (accounts.get(i) instanceof SavingsAccount) {
@@ -71,7 +72,7 @@ public class Bank {
      * @return If there exists an checking account with accountID return it. Otherwise return null
      */
     private Account getCheckingAccount(String accountID) {
-        // TODO
+        // given an account, find the checking account associate with it if there is any
         for (int i = 0; i < accounts.size(); i++) {
             if (accounts.get(i).getId().equals(accountID)
                     && accounts.get(i) instanceof CheckingAccount) {
@@ -88,7 +89,7 @@ public class Bank {
      * @return If there exists an savings account with accountID return it. Otherwise return null
      */
     private Account getSavingsAccount(String accountID) {
-        // TODO
+        // given an account, find the saving account associate with it if there is any
         for (int i = 0; i < accounts.size(); i++) {
             if (accounts.get(i).getId().equals(accountID)
                     && accounts.get(i) instanceof SavingsAccount) {
@@ -113,7 +114,8 @@ public class Bank {
         String failMSG = accountID + " ALREADY HAD A CHECKING ACCOUNT!";
         String minimumMSG = "THE MINIMUM INITIAL DEPOSIT FOR A CHECKING ACCOUNT WAS NOT MET!";
 
-        // TODO
+        // create a checking account, if the accountID has been already taken, or
+        // the initial deposit is insufficient, return false, otherwise return true.
         double miniDeposit = 0.01;
         if (getCheckingAccount(accountID) != null) {
             System.out.println(failMSG);
@@ -147,8 +149,9 @@ public class Bank {
         String failMSG = accountID + " ALREADY HAD A SAVINGS ACCOUNT!";
         String minimumMSG = "THE MINIMUM INITIAL DEPOSIT FOR A CHECKING ACCOUNT WAS NOT MET!";
 
-        // TODO
-        double miniDeposit = 0.01;
+        // create a saving account, if the accountID has been already taken, or
+        // the initial deposit is insufficient, return false, otherwise return true.
+        double miniDeposit = 100;
         if (getSavingsAccount(accountID) != null) {
             System.out.println(failMSG);
             return false;
@@ -162,8 +165,6 @@ public class Bank {
                 return false;
             }
             System.out.println(successMSG);
-
-
             return true;
         }
     }
@@ -179,7 +180,8 @@ public class Bank {
         String noCheckingMSG = accountID + " DOES NOT HAVE A CHECKING ACCOUNT!";
         String noSavingsMSG = accountID + " DOES NOT HAVE A SAVINGS ACCOUNT!";
 
-        // TODO
+        // return the account associated with the account ID, if there is no associated account
+        // return null.
         if (isChecking) {
             if (getCheckingAccount(accountID) == null) {
                 System.out.println(noCheckingMSG);
@@ -205,7 +207,8 @@ public class Bank {
      * @return The new balance of the account after deposit. Null if no account exists with accountID
      */
     public Double deposit(boolean isChecking, String accountID, double amount)  {
-        // TODO
+        // deposit the amount of money to the account associated with the ID
+        // if there is no associated account, return null
         if (getAccount(accountID, isChecking) != null) {
             return getAccount(accountID, isChecking).deposit(amount);
         }
@@ -224,7 +227,8 @@ public class Bank {
      */
     public Double withdraw(boolean isChecking, String accountID, double amount) {
 
-        // TODO
+        // withdraw the amount of money from the account associated with the ID
+        // if there is no associated account, return null
         if (getAccount(accountID, isChecking) != null) {
             try {
                 getAccount(accountID, isChecking).withdraw(amount);
@@ -256,7 +260,9 @@ public class Bank {
      */
     public boolean onlineTransfer(String fromAccountID, boolean isFromChecking, String toAccountID,
                                   boolean isToChecking, double amount) {
-        // TODO
+        // transfer money from one account to another,
+        // while the account taken money from needs to have sufficient funds, and both of
+        // these accounts need to exist
         if (getAccount(fromAccountID, isFromChecking) == null
                 || getAccount(toAccountID, isToChecking) == null) {
             return false;
@@ -287,7 +293,9 @@ public class Bank {
     public boolean checkTransfer(String fromAccountID,boolean isFromChecking, String toAccountID,
                                  boolean isToChecking, double amount) {
         String shouldUseCheckingMSG = fromAccountID + " SHOULD USE A CHECKING ACCOUNT!";
-        // TODO
+        // transfer money using checks, and in addition to all the rules from online transfer
+        // there is check fee if the account taken money from is below initial deposit, and
+        // $2 charged for over 3 incurs of check transfer
         double requiredDeposit = 0.01;
         if (!isFromChecking) {
             System.out.println(shouldUseCheckingMSG);
@@ -317,7 +325,7 @@ public class Bank {
      * Adds interest to every savings account.
      */
     public void addInterest() {
-        // TODO
+        // return the balance after the interest rate is added.
         int dividingFactor = 100;
         for (int i = 0; i < accounts.size(); i++) {
             if (accounts.get(i) instanceof SavingsAccount) {
@@ -336,7 +344,21 @@ public class Bank {
      * @param accountID the id of the account to obtain
      */
     public void printAccount(String accountID) {
-        // TODO
+        // prints out the information of the account
+        if (getCheckingAccount(accountID) != null) {
+            if (getAccount(accountID, true) != null) {
+                System.out.println("ID: " + accountID);
+                System.out.println("Balance: " + getAccount(accountID, true).balance);
+            }
+            getAccount(accountID, true);
+        }
+        if (getSavingsAccount(accountID) != null) {
+            if (getAccount(accountID, false) != null) {
+                System.out.println("ID: " + accountID);
+                System.out.println("Balance: " + getAccount(accountID, false).balance);
+            }
+            getAccount(accountID, false);
+        }
     }
 
 }

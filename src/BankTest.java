@@ -149,4 +149,5 @@ public class BankTest {
         bank.addInterest();
         assertEquals(2040, bank.getAccount("Savings", false).getBalance(), EPSILON);
     }
+
 }
