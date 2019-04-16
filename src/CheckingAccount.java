@@ -1,3 +1,7 @@
+/*
+ * NAME: Zhaoyi Guo
+ * PID: A15180402
+ */
 /**
  * The CheckingAccount class extends Account.
  * This account does not give any interest.
@@ -100,18 +104,20 @@ public class CheckingAccount extends Account {
      */
     public double withdraw(double amount) throws InsufficientFundsException{
         // TODO
-        double REQUIRED_DEPOSIT = 0.01;
-        double MAXIMUM_POSSIBLE_WITHDRAWAL = balance - REQUIRED_DEPOSIT;
-        if ((MAXIMUM_POSSIBLE_WITHDRAWAL) < amount || MAXIMUM_POSSIBLE_WITHDRAWAL < 0) {
-            throw new InsufficientFundsException("THE MAXIMUM AMOUNT THE USER: (" + id +
-                    ") CAN WITHDRAW FROM THEIR CHECKING ACCOUNT IS ($" + MAXIMUM_POSSIBLE_WITHDRAWAL + ")");
+        double requiredDeposit = 0.01;
+        double maximumPossibleWithdrwal = balance - requiredDeposit;
+        if ((maximumPossibleWithdrwal) < amount || maximumPossibleWithdrwal < 0) {
+            throw new InsufficientFundsException("THE MAXIMUM AMOUNT THE USER: (" + id
+                    + ") CAN WITHDRAW FROM THEIR CHECKING ACCOUNT IS ($"
+                    + maximumPossibleWithdrwal + ")");
         }
         else if (inOverdraft) {
-            throw new InsufficientFundsException("USER: (" + id + ") CANNOT MAKE A WITHDRAWAL FROM THEIR CHECKING " +
-                    "ACCOUNT UNTIL THEY COVER THEIR NEGATIVE BALANCE WITH A DEPOSIT OF AT LEAST ($" + REQUIRED_DEPOSIT +
-                    ")");
+            throw new InsufficientFundsException("USER: (" + id
+                    + ") CANNOT MAKE A WITHDRAWAL FROM THEIR CHECKING "
+                    + "ACCOUNT UNTIL THEY COVER THEIR NEGATIVE BALANCE "
+                    + "WITH A DEPOSIT OF AT LEAST ($" + requiredDeposit
+                    + ")");
         }
-//        can we use id instead of accountid?
         else {
             balance = balance - amount;
         }
@@ -136,23 +142,22 @@ public class CheckingAccount extends Account {
      * @return the remaining balance in the account*/
     public double withdrawUsingCheck(double amount) throws InsufficientFundsException{
         // TODO
-        double REQUIRED_DEPOSIT = 0.01 + balance;
+        double requiredDeposit = 0.01 + balance;
         int overdraftFee = 35;
         int checkFee = 2;
         if (balance > 0) {
             balance -= amount;
         }
         else {
-            throw new InsufficientFundsException("USER: (" + id + ") CANNOT MAKE A WITHDRAWAL FROM THEIR CHECKING " +
-                    "ACCOUNT UNTIL THEY COVER THEIR NEGATIVE BALANCE WITH A DEPOSIT OF AT LEAST ($" + REQUIRED_DEPOSIT +
-                    ")");
+            throw new InsufficientFundsException("USER: (" + id
+                    + ") CANNOT MAKE A WITHDRAWAL FROM THEIR CHECKING "
+                    + "ACCOUNT UNTIL THEY COVER THEIR NEGATIVE BALANCE "
+                    + "WITH A DEPOSIT OF AT LEAST ($" + requiredDeposit
+                    + ")");
         }
 
         if (balance < 0) {
             balance -= overdraftFee;
-//            throw new InsufficientFundsException("USER: (" + id + ") CANNOT MAKE A WITHDRAWAL FROM THEIR CHECKING " +
-//                    "ACCOUNT UNTIL THEY COVER THEIR NEGATIVE BALANCE WITH A DEPOSIT OF AT LEAST ($" + REQUIRED_DEPOSIT +
-//                    ")");
         }
         numberOfChecksUsed++;
         if (numberOfChecksUsed > 3) {

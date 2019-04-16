@@ -1,7 +1,6 @@
-import java.util.Arrays;
-// remember to remove this import
-/**
- *  TODO: add class header
+/*
+ * NAME: Zhaoyi Guo
+ * PID: A15180402
  */
 public class SunshineMarket {
     // Customer
@@ -86,8 +85,8 @@ public class SunshineMarket {
 //        System.out.println(Arrays.toString(((CircularArrayQueue)registers[2]).getter()));
 //        System.out.println(totalTime);
 //        System.out.println(registersIdleTime);
-        return "With " + numberOfRegisters +
-        " lines, the total time for checking out all customers was "
+        return "With " + numberOfRegisters
+        + " lines, the total time for checking out all customers was "
         + totalTime + " time units, and registers were idle for a total of "
         + registersIdleTime + " time units.\n";
     }
@@ -119,6 +118,6 @@ public class SunshineMarket {
             }
         }
 //        System.out.println((result == true && customersQueue.isEmpty()));
-        return (result == true && customersQueue.isEmpty());
+        return (result && customersQueue.isEmpty());
     }
 }

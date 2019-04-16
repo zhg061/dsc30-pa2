@@ -1,3 +1,7 @@
+/*
+ * NAME: Zhaoyi Guo
+ * PID: A15180402
+ */
 /**
  * The SavingsAccount class extends Account.
  * The minimum amount a customer can keep in a savings account is $100.
@@ -63,10 +67,11 @@ public class SavingsAccount extends Account {
     public double withdraw(double amount) throws InsufficientFundsException {
         int withdrawFee = 2;
         int miniDeposit = 100;
-        double MAXIMUM_POSSIBLE_WITHDRAWAL = balance - miniDeposit - withdrawFee;
-        if ((MAXIMUM_POSSIBLE_WITHDRAWAL) < amount || MAXIMUM_POSSIBLE_WITHDRAWAL < 0) {
-            throw new InsufficientFundsException("THE MAXIMUM AMOUNT THE USER: (" + id +
-                    ") CAN WITHDRAW FROM THEIR SAVINGS ACCOUNT IS ($" + MAXIMUM_POSSIBLE_WITHDRAWAL + ")");
+        double maximumPossibleWithdrawl = balance - miniDeposit - withdrawFee;
+        if ((maximumPossibleWithdrawl) < amount || maximumPossibleWithdrawl < 0) {
+            throw new InsufficientFundsException("THE MAXIMUM AMOUNT THE USER: ("
+                    + id + ") CAN WITHDRAW FROM THEIR SAVINGS ACCOUNT IS ($"
+                    + maximumPossibleWithdrawl + ")");
         }
         else {
             balance = balance - amount - withdrawFee;
@@ -86,7 +91,7 @@ public class SavingsAccount extends Account {
      * @return The update balance in the account*/
     public double addInterest(double rate){
         int percentageFactor = 100;
-        balance = balance * (1 + rate/percentageFactor);
+        balance = balance * (1 + rate / percentageFactor);
         return balance;
     }
 }
